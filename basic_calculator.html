@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align:center">
+    <h1 style="text-transform: uppercase;">Basic Calculator</h1>
+    <p>Enter first number</p>
+    <input type="text" id="first_number" /> 
+    <p>Enter second number</p>
+    <input type="text" id="second_number" />
+    <p>Select operation type</p>
+    <select id="operation" name="operation">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select>        
+    <br>
+    <br>
+    <hr>
+    <p>Result: <span id="result"></span></p>
+    <br>
+    <br>
+    <button id="calculate">calculate</button>
+    <hr>
+    <br>
+    <br>
+    <p></p>
+    <p>Relevel assignment by <b>Mahendra choudhary</b></p>
+
+
+</body>
+</html>
+
+<script>
+    'use strict';
+    const first_number_box = document.querySelector('#first_number');
+    const second_number_box = document.querySelector('#second_number');
+    const operation_dropdown = document.querySelector('#operation');
+    const calculate_btn = document.querySelector('#calculate');
+    const resultArea = document.querySelector('#result');
+    calculate_btn.addEventListener("click", async ()=>{
+        try {
+            const first_number = Number(first_number_box.value);
+            const second_number = Number(second_number_box.value);
+            const operation_type = operation_dropdown.value;
+            if(Number.isInteger(first_number) && Number.isInteger(second_number)) {
+                let result;
+                switch(operation_type) {
+                    case '+' : result = first_number + second_number;
+                    break;
+                    case '-' : result = first_number - second_number;
+                    break;
+                    case '*' : result = first_number * second_number;
+                    break;
+                    case '/' : result = first_number / second_number;
+                    break;
+                    default :
+                    alert(`Invalid operation`);
+                    break;
+                }
+                resultArea.textContent = result;
+            } else {
+                alert('Please enter a valid numbers')
+            }
+        } catch (error) {
+            alert('Something went wrong')
+        }
+    })
+</script>
